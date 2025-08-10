@@ -1,0 +1,15 @@
+# Ativar o mecanismo de reescrita do Apache
+RewriteEngine On
+
+# Caminho base da aplicação
+RewriteBase /sistema-escola/public/
+
+# Se não for um arquivo existente
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Se não for um diretório existente
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Captura qualquer coisa e redireciona para index.php com o "url"
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+
